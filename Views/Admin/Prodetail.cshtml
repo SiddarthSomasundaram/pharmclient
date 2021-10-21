@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PharmClient.Models.Product>
+
+@{
+    ViewData["Title"] = "Prodetail";
+}
+
+<style>
+    th {
+        color: white;
+    }
+
+    td {
+        color: #156760;
+    }
+</style>
+
+<a asp-action="AddProduct"><button class="btn btn-primary" style="background-color: #156760;border:none;padding:7px 30px;color:white;margin-bottom:10px;">Add New Product</button></a>
+
+<table class="table">
+    <thead>
+        <tr style="background-color: #156760">
+            <th>
+                Product ID
+            </th>
+            <th>
+                Product Image
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Product Description
+            </th>
+            <th>
+                Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="background-image: linear-gradient(to right,white,white,#A2ECE6);width:100%">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Productid)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.ProductImage)" alt="no data" height="100" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Productname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDesc)
+                </td>
+                <td>
+                    Rs.@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="EditProduct" asp-route-id="@item.Productid"><img src="~/Images/editing.png" width="20" height="20" /></a> |
+                    <a asp-action="DeleteProduct" asp-route-id="@item.Productid" onclick="return confirm('Are you sure you want to delete this product?')"><img src="~/Images/delete.png" width="20" height="20" /></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

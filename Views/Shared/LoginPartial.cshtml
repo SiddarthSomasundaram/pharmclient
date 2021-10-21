@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+<ul class="navbar-nav ml-auto">
+    @{
+        ViewBag.Data = @HttpContextAccessor.HttpContext.Session.GetString("username");
+    }
+    @if (ViewBag.Data != null)
+    {
+        if (ViewBag.Data == "Admin")
+        {
+            <li class="nav-item border-white">
+                <a id="manage" class="nav-link text-white" asp-controller="Admin" asp-action="Prodetail" title="Manage"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+</svg> Hello @ViewBag.Data!</a>
+            </li>
+
+            <li class="nav-item">
+                <form id="logoutForm" class="form-inline" asp-controller="Login" asp-action="Logout" asp-route-returnUrl="@Url.Action("Login", "Login", new { area = "" })">
+                    <button id="logout" type="submit" class="nav-link btn btn-link text-white"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+    <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+</svg> Logout</button>
+                </form>
+            </li>
+        }
+        else
+        {
+            @*<li class="nav-item border-white">
+                <a id="manage" class="nav-link text-white" asp-controller="Order" asp-action="myorders" title="Manage">Hello @ViewBag.Data!</a>
+            </li>*@
+            <li class="nav-item border-white">
+                <a asp-action="ViewProfile" asp-controller="Prof" class="nav-link text-white"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+</svg> Hello @ViewBag.Data!</a>
+            </li>
+            <li class="nav-item border-white">
+                <a asp-action="Cartdetails" asp-controller="Prod" class="nav-link text-white"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+    <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+</svg> Cart Details</a>
+            </li>
+            @*<li class="nav-item border-right border-white">
+                <a asp-action="CancelOrder" asp-controller="Order" class="nav-link text-white" onclick="" onclick="location.href='@Url.Action("Productdetails", "Prod")'">Cancel Order</a>
+            </li>*@
+            <li class="nav-item border-white">
+                <a asp-action="Myorders" asp-controller="Order" class="nav-link text-white" onclick="location.href='@Url.Action("Myorders", "Order")'"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+</svg> My Orders</a>
+            </li>
+            <li class="nav-item">
+                <form id="logoutForm" class="form-inline" asp-controller="Login" asp-action="Logout" asp-route-returnUrl="@Url.Action("Login", "Login", new { area = "" })">
+                    <button id="logout" type="submit" class="nav-link btn btn-link text-white"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+    <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+</svg> Logout</button>
+                </form>
+            </li>
+        }
+
+
+    }
+
+    else
+    {
+        <li class="nav-item border-white">
+            <a class="nav-link text-white" id="register" asp-controller="Login" asp-action="Signup"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16">
+    <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+</svg> Signup</a>
+
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" id="login" asp-controller="Login" asp-action="Login"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+    <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+</svg> Login</a>
+        </li>
+    }
+</ul>

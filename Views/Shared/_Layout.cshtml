@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewBag.Data = @HttpContextAccessor.HttpContext.Session.GetString("username");
+
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PharmClient</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        html {
+  height:100%;
+}
+        nav.shift ul li a {
+            position: relative;
+            z-index: 1;
+        }
+
+            nav.shift ul li a:hover {
+                color: #24B3A8;
+            }
+
+            nav.shift ul li a:after {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                margin: auto;
+                width: 100%;
+                height: 1px;
+                content: '.';
+                color: transparent;
+                background: #24B3A8;
+                visibility: none;
+                opacity: 0;
+                z-index: -1;
+            }
+
+            nav.shift ul li a:hover:after {
+                opacity: 1;
+                visibility: visible;
+                height: 100%;
+            }
+body {
+  margin:0;
+}
+
+        .bg {
+            animation: slide 3s ease-in-out infinite alternate;
+            background-image: linear-gradient(-60deg, #B6E5D8 50%, #1D8D84 50%);
+            bottom: 0;
+            left: -50%;
+            opacity: .5;
+            position: fixed;
+            right: -50%;
+            top: 0;
+            z-index: -1;
+        }
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+.content {
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:10vmin;
+  position:fixed;
+  text-align:center;
+  top:50%;
+  transform:translate(-50%, -50%);
+}
+
+/*h1 {
+  font-family:monospace;
+}*/
+
+@@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 shift" style="background-image: linear-gradient(to right,white,#A2ECE6,#1D8D84,#1D8D84) ">
+            <div class="container">
+                @if (ViewBag.Data != null)
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Prod" asp-action="Productdetails" style="color: #24B3A8">
+                        <img src="~/Images/pharmercy-icon-6.jpg" alt="nodata" height="30" width="30" style=" margin-right:10px" /><i><b>BestBuy Pharmacy</b></i>
+                    </a>
+                }
+                else
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Login" asp-action="Login" style="color: #24B3A8">
+                        <img src="~/Images/pharmercy-icon-6.jpg" alt="nodata" height="30" width="30" style=" margin-right:10px" /><i><b>BestBuy Pharmacy</b></i>
+                    </a>
+                }
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <partial name="LoginPartial" />
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+
+</body>
+</html>

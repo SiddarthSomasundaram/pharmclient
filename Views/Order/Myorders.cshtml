@@ -1,0 +1,102 @@
+﻿@model IEnumerable<PharmClient.Models.AddtoCart>
+
+@{
+    ViewData["Title"] = "Myorders";
+}
+
+<style>
+    th {
+        color: white;
+    }
+
+    td {
+        color: #156760;
+    }
+    input:hover[type="submit"] {
+        border-radius: 20%;
+        border: none;
+        border-color: bisque;
+        background-color: antiquewhite;
+    }
+
+    input.slide-hover-left-1 {
+        background-image: linear-gradient(0, #156760, #156760);
+        background-size: 0;
+        transition: .8s;
+        background-repeat: no-repeat;
+    }
+
+        input.slide-hover-left-1:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+
+    button:hover[type="submit"] {
+        border-radius: 20%;
+        border: none;
+        border-color: bisque;
+        background-color: antiquewhite;
+    }
+
+    button.slide-hover-left-1 {
+        background-image: linear-gradient(0, #156760, #156760);
+        background-size: 0;
+        transition: .8s;
+        background-repeat: no-repeat;
+    }
+
+        button.slide-hover-left-1:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+</style>
+
+
+<table class="table">
+    <thead>
+        <tr style="background-color: #156760">
+
+            @*<th>
+                Product ID
+            </th>*@
+            <th>
+                Product Image
+            </th>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Product Description
+            </th>
+            <th>
+                Price
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="background-image: linear-gradient(to right,white,white,#A2ECE6);width:100%">
+
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Productid)
+                </td>*@
+                <td>
+                    <img src="@Url.Content(item.ProductImage)" alt="no data" height="100" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Productname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDesc)
+                </td>
+                <td>
+                    Rs.@Html.DisplayFor(modelItem => item.Price)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<a onclick="location.href='@Url.Action("Productdetails", "Prod")'"><button class="btn btn-primary slide-hover-left-1" style="background-color: #1D8D84; border: none; padding: 7px 30px; color: white">Back to products</button></a>

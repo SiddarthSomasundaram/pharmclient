@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<PharmClient.Models.Product>
+<style>
+    #divprofile {
+        border: solid;
+    }
+    input:hover[type="submit"] {
+        border-radius: 20%;
+        border: none;
+        border-color: bisque;
+        background-color: antiquewhite;
+    }
+
+    input.slide-hover-left-1 {
+        background-image: linear-gradient(0, #156760, #156760);
+        background-size: 0;
+        transition: .8s;
+        background-repeat: no-repeat;
+    }
+
+        input.slide-hover-left-1:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+
+    button:hover[type="submit"] {
+        border-radius: 20%;
+        border: none;
+        border-color: bisque;
+        background-color: antiquewhite;
+    }
+
+    button.slide-hover-left-1 {
+        background-image: linear-gradient(0, #156760, #156760);
+        background-size: 0;
+        transition: .8s;
+        background-repeat: no-repeat;
+    }
+
+        button.slide-hover-left-1:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+    #itemdiv {
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+    #div1 {
+        text-align: center;
+    }
+
+    h6 {
+        color: #156760;
+    }
+</style>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    @foreach (var pro in Model)
+                    {
+                        <div class="col-lg-4">
+                            <div class="card" id="itemdiv" style=" background-image: linear-gradient(to bottom,white,white,#A2ECE6);">
+                                <div class="card-body" id="div1">
+                                    @*<h6>@pro.Productid</h6>*@
+                                    <img src="@Url.Content(pro.ProductImage)" alt="no data" height="100" width="100" />
+                                    <h4 style="color: #156760">@pro.Productname</h4>
+                                    <h6>@pro.ProductDesc</h6>
+                                    <h4 style="color: #2F4F4F">Rs.@pro.Price</h4>
+
+                                </div>
+                                <input type="button" value="Addtocart" class="btn btn-primary slide-hover-left-1" onclick="location.href = '@Url.Action("AddtoCart", "Prod",pro)';return confirm ('Product Added');" style="background-color: #1D8D84; border: none; " />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            @*<div class="col-3" id="divprofile"style=" background-image: linear-gradient(to bottom,white,white,#A2ECE6);">
+                <center>
+                    <img src="~/Images/Profile.png" alt="nodata" height="100" width="100" /><br />
+                    <a asp-action="ViewProfile" asp-controller="Prof" class="btn btn-primary" style="background-color: #156760;border:none;  ">View Profile</a>
+                    <hr />
+                    <a asp-action="Cartdetails" asp-controller="Prod"class="btn btn-primary" style="background-color: #156760;border:none;  ">Cart Details</a>
+                    <hr />
+                    <a asp-action="CancelOrder" asp-controller="Order" onclick="return confirm ('Are you sure want to cancel ?')" class="btn btn-primary" style="background-color: #156760;border:none;  ">Cancel Order</a>
+                    <hr />
+                    <a asp-action="Myorders" asp-controller="Order" class="btn btn-primary" style="background-color: #156760;border:none;  " onclick="location.href='@Url.Action(" Myorders", "Order" )'">My Orders</a>
+                </center>
+            </div>*@
+        </div>
+    </div>
+</body>
+@*onclick="location.href='@Url.Action("Productdetails", "Prod")'*@

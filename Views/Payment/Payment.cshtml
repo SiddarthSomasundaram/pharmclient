@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    .fs {
+        font-size: 12px;
+    }
+    input:hover[type="submit"] {
+        border-radius: 20%;
+        border: none;
+        border-color: bisque;
+        background-color: antiquewhite;
+    }
+
+    input.slide-hover-left-1 {
+        background-image: linear-gradient(0, #156760, #156760);
+        background-size: 0;
+        transition: .8s;
+        background-repeat: no-repeat;
+    }
+
+        input.slide-hover-left-1:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+
+    button:hover[type="submit"] {
+        border-radius: 20%;
+        border: none;
+        border-color: bisque;
+        background-color: antiquewhite;
+    }
+
+    button.slide-hover-left-1 {
+        background-image: linear-gradient(0, #156760, #156760);
+        background-size: 0;
+        transition: .8s;
+        background-repeat: no-repeat;
+    }
+
+        button.slide-hover-left-1:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+    #logindiv {
+        width: 380px;
+        height: 480px;
+        /*overflow: hidden;*/
+        margin-left: 33%;
+        margin-top: 3%;
+        /*margin: 20 0 0 450px;*/
+        padding: 70px;
+        background-image: linear-gradient(to right,#A2ECE6,#24B3A8,#1D8D84);
+        border-radius: 15px;
+    }
+</style>
+
+<div class="justify-content-center" id="logindiv">
+    <h1 style="text-align: center; color: #A2ECE6; font-size: 40px; ">Payment</h1>
+    <form>
+        <i class="fa fa-qrcode" style="font-size: 30px; color: black;"></i>
+        &nbsp;&nbsp;&nbsp;
+        <a class="btn btn-sm btn-outline-light" asp-controller="Payment" asp-action="UPI">UPI</a>
+        <hr />
+        <i class="fa fa-credit-card" style="font-size: 30px; color: black;"></i>
+        &nbsp;
+        <a class="btn btn-sm btn-outline-light" asp-controller="Payment" asp-action="Cardpayment">Credit/Debit Card</a>
+        <hr />
+        <i class="fa fa-money" style="font-size: 30px; color: black;"></i>
+        &nbsp;
+        <a class="btn btn-sm btn-outline-light" asp-controller="Payment" asp-action="Cod">Cash on delivery</a>
+        <hr />
+        <i class="fa fa-inr" style="font-size: 30px; color: black;"></i>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="btn btn-sm btn-outline-light" asp-controller="Payment" asp-action="NetBanking">NetBanking</a>
+    </form>
+    <div>
+        <center><a onclick="location.href='@Url.Action("Cartdetails", "Prod")'"><button class="btn btn-primary slide-hover-left-1" style="background-color: #1D8D84; border: none; padding: 7px 30px; color: white; margin-top: 20px"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+    <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
+</svg> Back</button></a></center>
+    </div>
+</div>
+    

@@ -1,0 +1,59 @@
+﻿@model PharmClient.Models.Product
+
+@{
+    ViewData["Title"] = "AddProduct";
+}
+<style>
+    #signupdiv {
+        width: 382px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        background-image: linear-gradient(to right,#A2ECE6,#24B3A8,#1D8D84);
+        border-radius: 15px;
+    }
+</style>
+<div class="justify-content-center" id="signupdiv">
+    <h1 style="text-align: center; color: #A2ECE6; font-size: 40px; ">Add Product</h1>
+    <div class="col-md-12">
+        <form asp-action="AddProduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="Productid" class="control-label" style="color:white;">Product ID</label>
+                <input asp-for="Productid" class="form-control" />
+                <span asp-validation-for="Productid" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="ProductImage" class="control-label" style="color:white;">Product Image</label>
+                <input asp-for="ProductImage" class="form-control" />
+                <span asp-validation-for="ProductImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Productname" class="control-label" style="color:white;">Product Name</label>
+                <input asp-for="Productname" class="form-control" />
+                <span asp-validation-for="Productname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductDesc" class="control-label" style="color:white;">Product Description</label>
+                <input asp-for="ProductDesc" class="form-control" />
+                <span asp-validation-for="ProductDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label" style="color:white;">Price</label>
+                <input asp-for="Price" type="number" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary" style="background-color: #156760;border:none;margin-left:35%;" />
+                <a asp-action="Prodetail" asp-controller="Admin"><button class="btn btn-primary" style="background-color: #156760;border:none;margin-left:35%;margin-top:10%; color:white">Back</button></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

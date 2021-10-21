@@ -1,0 +1,15 @@
+﻿@model PharmClient.Models.AddtoCart
+
+@{
+    ViewData["Title"] = "CancelOrder";
+}
+
+<div class="jumbotron col-md-6" style="background-image: linear-gradient(to right,#A2ECE6,#24B3A8,#1D8D84); margin-left: 350px;">
+    <h4 style="color: white;text-align:center">Are you sure you want to delete this order?</h4>
+    <br />
+    <form asp-action="CancelOrder">
+        <input type="submit" value="Cancel" class="btn btn-danger slide-hover-left-1" />
+
+    </form>
+</div>
+

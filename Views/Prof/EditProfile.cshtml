@@ -1,0 +1,120 @@
+﻿@model PharmClient.Models.CustomerDetail
+
+@{
+    ViewData["Title"] = "EditProfile";
+}
+
+<style>
+    #signupdiv {
+        width: 382px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 450px;
+        padding: 80px;
+        background-image: linear-gradient(to right,#A2ECE6,#24B3A8,#1D8D84);
+        border-radius: 15px;
+    }
+    input:hover[type="submit"] {
+        /*border-radius: 20%;*/
+        background-image: linear-gradient(0, #156760, #156760);
+        background-size: 0;
+        transition: .8s;
+        background-repeat: no-repeat;
+    }
+        input:hover[type="submit"]:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+
+        input.slide-hover-left-1 {
+            background-image: linear-gradient(0, #156760, #156760);
+            background-size: 0;
+            transition: .8s;
+            background-repeat: no-repeat;
+        }
+
+        input.slide-hover-left-1:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+
+    button:hover[type="submit"] {
+        /*border-radius: 20%;*/
+        border: none;
+        border-color: bisque;
+        background-color: antiquewhite;
+    }
+
+    button.slide-hover-left-1 {
+        background-image: linear-gradient(0, #156760, #156760);
+        background-size: 0;
+        transition: .8s;
+        background-repeat: no-repeat;
+    }
+
+        button.slide-hover-left-1:hover {
+            background-size: 100%;
+            color: #fff;
+        }
+</style>
+
+<div class="justify-content-center" id="signupdiv">
+    <h1 style="text-align: center; color: #A2ECE6; font-size: 40px; ">EditProfile</h1>
+    <div class="col-md-12">
+        <form asp-action="EditProfile">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Userid" class="control-label" style="color:white;">Id</label>
+                <input asp-for="Userid" class="form-control" />
+                <span asp-validation-for="Userid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label" style="color:white;">Username</label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label" style="color:white;">Gender</label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label" style="color:white;">Age</label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label" style="color:white;">Address</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label" style="color:white;">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label" style="color:white;">Phone</label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label" style="color:white;">Password</label>
+                <input type="password" asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <center><input type="submit" value="Save" class="btn btn-primary" class="btn btn-primary slide-hover-left-1" style="background-color: #1D8D84; border: none; padding: 7px 30px; color: white; " /></center>
+            </div>
+
+        </form>
+        <div>
+            <center><a class="justify-content-center" asp-action="ViewProfile" asp-controller="Prof"><button class="btn btn-primary slide-hover-left-1" style="background-color: #1D8D84; border: none; padding: 7px 30px; color: white; ">Back</button></a></center>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
